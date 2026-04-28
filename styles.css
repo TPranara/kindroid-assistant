@@ -1,0 +1,382 @@
+/* ─────────────────────────────────────────────────────────
+   Kindroid Assistant — Kindroid-themed sidebar styles
+   Poppins font, dark palette, warm bubbles
+───────────────────────────────────────────────────────── */
+
+.ka-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--ka-font-family, 'Poppins', sans-serif);
+  font-size: var(--ka-font-size, 16px);
+  background-color: #101010;
+  color: #CBCBCB;
+}
+
+/* ── Header ──────────────────────────────────────────── */
+
+.ka-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid #2a2a2a;
+  flex-shrink: 0;
+}
+
+.ka-header-title {
+  font-weight: 600;
+  font-size: var(--ka-font-size, 16px);
+  font-family: var(--ka-font-family, 'Poppins', sans-serif);
+  background: linear-gradient(to right, #8B6DFF, #FE8484);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.01em;
+}
+
+.ka-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.ka-header-hint {
+  font-size: 11px;
+  color: #88887A;
+  font-family: var(--ka-font-family, 'Poppins', sans-serif);
+}
+
+/* ── Copy buttons ────────────────────────────────────── */
+
+.ka-header-pipe {
+  color: #2a2a2a;
+  font-size: 14px;
+  user-select: none;
+  padding: 0 2px;
+}
+
+.ka-copy-btn {
+  background-color: #101010 !important;
+  border: none !important;
+  cursor: pointer;
+  color: #88887A;
+  padding: 2px 4px;
+  border-radius: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease;
+  line-height: 1;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ka-copy-btn:hover {
+  color: #CBCBCB;
+  background-color: #101010 !important;
+  box-shadow: none !important;
+}
+
+.ka-copy-btn:focus {
+  background-color: #101010 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ka-copy-btn-flash {
+  color: #8B6DFF !important;
+}
+
+.ka-copy-btn-inline {
+  opacity: 0;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.ka-msg:hover .ka-copy-btn-inline {
+  opacity: 1;
+}
+
+/* Label row — holds label and copy button side by side */
+.ka-msg-label-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 2px;
+}
+
+/* ── Message list ────────────────────────────────────── */
+
+.ka-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #101010;
+}
+
+/* Scrollbar styling */
+.ka-messages::-webkit-scrollbar {
+  width: 4px;
+}
+.ka-messages::-webkit-scrollbar-track {
+  background: #101010;
+}
+.ka-messages::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 2px;
+}
+
+/* ── Message rows ────────────────────────────────────── */
+
+.ka-msg {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  max-width: 94%;
+}
+
+.ka-msg-user {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.ka-msg-assistant {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+/* Labels */
+.ka-msg-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0 4px;
+  font-family: var(--ka-font-family, 'Poppins', sans-serif);
+}
+
+.ka-msg-user .ka-msg-label {
+  color: #866AF6;
+}
+
+.ka-msg-assistant .ka-msg-label {
+  color: #FF964A;
+}
+
+/* Bubbles */
+.ka-msg-bubble {
+  padding: 9px 13px;
+  border-radius: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text;
+  word-break: break-word;
+  font-size: var(--ka-font-size, 16px);
+  font-family: var(--ka-font-family, 'Poppins', sans-serif);
+  color: #CBCBCB;
+}
+
+.ka-msg-user .ka-msg-bubble {
+  background-color: #1B1C1E;
+  border-bottom-right-radius: 4px;
+}
+
+.ka-msg-assistant .ka-msg-bubble {
+  background-color: #211B19;
+  border-bottom-left-radius: 4px;
+}
+
+/* Action text — *between asterisks* */
+.ka-action-text {
+  color: #88887A;
+  font-style: normal;
+}
+
+/* Thinking indicator */
+.ka-thinking {
+  opacity: 0.5;
+  font-style: italic;
+}
+
+/* ── Input area ──────────────────────────────────────── */
+
+.ka-input-wrap {
+  flex-shrink: 0;
+  padding: 8px 10px 12px;
+  border-top: 1px solid #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #101010;
+}
+
+.ka-input {
+  width: 100%;
+  min-height: 54px;
+  max-height: 160px;
+  resize: vertical;
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+  padding: 9px 12px;
+  font-size: var(--ka-font-size, 16px);
+  line-height: 1.5;
+  background: #1B1C1E;
+  color: #CBCBCB;
+  font-family: var(--ka-font-family, 'Poppins', sans-serif);
+  box-sizing: border-box;
+  transition: border-color 0.15s ease;
+}
+
+.ka-input:focus {
+  outline: none;
+  border-color: #8B6DFF;
+}
+
+.ka-input:disabled {
+  opacity: 0.4;
+}
+
+.ka-input::placeholder {
+  color: #88887A;
+}
+
+/* ── Button row ──────────────────────────────────────── */
+
+.ka-btn-row {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.ka-btn {
+  padding: 6px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  font-family: var(--ka-font-family, 'Poppins', sans-serif);
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.ka-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Send — purple */
+.ka-btn-primary {
+  background-color: #8B6DFF;
+  color: #ffffff;
+}
+
+.ka-btn-primary:hover:not(:disabled) {
+  background-color: #7A5EE8;
+}
+
+/* Chat Break — turns red on hover */
+.ka-btn-ghost {
+  background-color: transparent;
+  color: #8B6DFF;
+  border: 1px solid #8B6DFF;
+}
+
+.ka-btn-ghost:hover:not(:disabled) {
+  background-color: rgba(220, 50, 50, 0.15);
+  color: #ff4444;
+  border-color: #ff4444;
+}
+
+/* Clear Screen — matches send button purple style */
+.ka-btn-clear {
+  background-color: transparent;
+  color: #8B6DFF;
+  border: 1px solid #8B6DFF;
+}
+
+.ka-btn-clear:hover:not(:disabled) {
+  background-color: rgba(139, 109, 255, 0.15);
+  color: #8B6DFF;
+  border-color: #8B6DFF;
+}
+
+/* Mic button */
+.ka-btn-mic {
+  background-color: transparent;
+  color: #8B6DFF;
+  border: 1px solid #8B6DFF;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.ka-btn-mic:hover:not(:disabled) {
+  background-color: rgba(139, 109, 255, 0.15);
+  color: #8B6DFF;
+}
+
+/* Mic active — glowing red dot to show recording */
+.ka-btn-mic-active {
+  color: #FE8484 !important;
+  border-color: #FE8484 !important;
+  background-color: rgba(254, 132, 132, 0.08) !important;
+}
+
+/* ── Custom context menu ─────────────────────────────── */
+
+.ka-context-menu {
+  position: fixed;
+  background: #1B1C1E;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 4px 0;
+  min-width: 130px;
+  z-index: 9999;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  font-family: var(--ka-font-family, 'Poppins', sans-serif);
+  font-size: 14px;
+}
+
+.ka-context-item {
+  padding: 7px 14px;
+  cursor: pointer;
+  color: #CBCBCB;
+  transition: background-color 0.1s ease;
+}
+
+.ka-context-item:hover {
+  background-color: #211B19;
+  color: #ffffff;
+}
+
+.ka-context-item-stop {
+  color: #FE8484;
+}
+
+.ka-context-item-stop:hover {
+  background-color: rgba(254, 132, 132, 0.08);
+}
+
+/* ── Voice select in settings ────────────────────────── */
+
+.ka-voice-select {
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 13px;
+  max-width: 220px;
+  width: 100%;
+}
