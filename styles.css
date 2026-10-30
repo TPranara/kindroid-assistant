@@ -36,6 +36,15 @@
   letter-spacing: 0.01em;
 }
 
+.ka-header-title-link {
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.ka-header-title-link:hover {
+  opacity: 0.75;
+}
+
 .ka-header-right {
   display: flex;
   align-items: center;
@@ -49,6 +58,167 @@
   font-family: var(--ka-font-family, 'Poppins', sans-serif);
 }
 
+/* Phone book button — small icon-only, sits next to the picker */
+.ka-phonebook-btn {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #CBCBCB !important;
+  background-color: #333333 !important;
+  border: 1px solid #8B6DFF !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ka-phonebook-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.ka-phonebook-btn:hover {
+  background-color: rgba(139, 109, 255, 0.15) !important;
+  color: #CBCBCB !important;
+}
+
+/* Phone book popup — title/description stay fixed; only the entry
+   list scrolls, regardless of how tall the modal itself ends up. */
+.ka-phonebook-list {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Stops Obsidian's own modal scroll from stacking a second scrollbar
+   around the one above — only affects this specific modal. */
+.ka-phonebook-modal {
+  overflow: hidden;
+}
+
+/* ── Kindroid-dark modal card ─────────────────────────
+   Shared by Set Scene and Group Contacts. Without this, only the
+   widgets we build by hand inside a modal (textarea, buttons, icons)
+   were ever forced dark — the modal's own card, heading, description
+   text, and Group Contacts' native Setting rows (text inputs, copy
+   icon) were left as Obsidian's own modal chrome, which follows
+   Obsidian's active theme same as everything else did before the
+   button fix. This makes the whole popup match the panel instead of
+   just the pieces we explicitly styled. */
+.ka-kindroid-modal {
+  background-color: #1B1C1E !important;
+  border: 1px solid #2a2a2a !important;
+  color: #CBCBCB !important;
+}
+
+.ka-kindroid-modal .modal-content {
+  background-color: transparent !important;
+  color: #CBCBCB !important;
+}
+
+.ka-kindroid-modal h2 {
+  color: #CBCBCB !important;
+}
+
+.ka-kindroid-modal .setting-item-description {
+  color: #88887A !important;
+}
+
+.ka-kindroid-modal .modal-close-button {
+  color: #CBCBCB !important;
+}
+
+.ka-kindroid-modal .setting-item {
+  border-top: 1px solid #2a2a2a !important;
+}
+
+.ka-kindroid-modal .setting-item-name {
+  color: #CBCBCB !important;
+}
+
+.ka-kindroid-modal input[type="text"],
+.ka-kindroid-modal textarea {
+  background-color: #333333 !important;
+  border: 1px solid #2a2a2a !important;
+  color: #CBCBCB !important;
+}
+
+.ka-kindroid-modal input[type="text"]:hover,
+.ka-kindroid-modal textarea:hover {
+  background-color: #333333 !important;
+  border-color: #2a2a2a !important;
+}
+
+.ka-kindroid-modal input[type="text"]:focus,
+.ka-kindroid-modal textarea:focus {
+  border-color: #8B6DFF !important;
+  box-shadow: none !important;
+}
+
+.ka-kindroid-modal .clickable-icon {
+  color: #88887A !important;
+}
+
+.ka-kindroid-modal .clickable-icon:hover {
+  color: #CBCBCB !important;
+  background-color: rgba(139, 109, 255, 0.15) !important;
+}
+
+/* Hot-swap AI/group picker — same !important reasoning as the .ka-btn
+   family above: a native <select> gets the same light-theme override
+   treatment a <button> does, so background/border need it here too,
+   even though this one happened to render fine already. */
+.ka-slot-picker {
+  background-color: #333333 !important;
+  color: #CBCBCB !important;
+  border: 1px solid #8B6DFF !important;
+  box-shadow: none !important;
+  border-radius: 8px;
+  padding: 3px 22px 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%238B6DFF'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+}
+
+/* The open dropdown list — background/text are reliably stylable in
+   Obsidian's Chromium. The hover/selected row highlight below is not
+   guaranteed the same way: Chromium draws that part of a native
+   <select> itself in some versions, and can ignore CSS for it. Worth
+   checking this specific row by eye — if it still shows a default
+   blue/grey instead of #2E2E2E, that's the platform overriding us,
+   not a mistake here, and the real fix would be replacing this with
+   a custom (non-native) dropdown built from scratch.
+*/
+.ka-slot-picker option {
+  background-color: #333333;
+  color: #FFFFFF;
+}
+
+.ka-slot-picker option:hover,
+.ka-slot-picker option:checked,
+.ka-slot-picker option:focus {
+  background-color: #2E2E2E;
+  color: #FFFFFF;
+}
+
+.ka-slot-picker:hover {
+  background-color: rgba(139, 109, 255, 0.15) !important;
+}
+
+.ka-slot-picker:focus {
+  outline: none !important;
+  background-color: rgba(139, 109, 255, 0.15) !important;
+}
+
 /* ── Copy buttons ────────────────────────────────────── */
 
 .ka-header-pipe {
@@ -59,44 +229,58 @@
 }
 
 .ka-copy-btn {
-  background-color: #101010 !important;
-  border: none !important;
   cursor: pointer;
   color: #88887A;
   padding: 2px 4px;
-  border-radius: 0 !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
   line-height: 1;
-  box-shadow: none !important;
   outline: none !important;
 }
 
-.ka-copy-btn:hover {
-  color: #CBCBCB;
-  background-color: #101010 !important;
+/* Header "Copy All" — matches the footer buttons' look for a uniform
+   header: #333333 background, purple outline. */
+.ka-copy-btn:not(.ka-copy-btn-inline) {
+  background-color: #333333 !important;
+  border: 1px solid #8B6DFF !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  color: #CBCBCB !important;
+}
+
+.ka-copy-btn:not(.ka-copy-btn-inline):hover {
+  color: #CBCBCB !important;
+  background-color: rgba(139, 109, 255, 0.15) !important;
+}
+
+.ka-copy-btn:not(.ka-copy-btn-inline):focus {
+  background-color: #333333 !important;
   box-shadow: none !important;
 }
 
-.ka-copy-btn:focus {
-  background-color: #101010 !important;
-  box-shadow: none !important;
-  outline: none !important;
-}
-
-.ka-copy-btn-flash {
-  color: #8B6DFF !important;
-}
-
+/* Per-message copy icon — unchanged, subtle, no border, blends into
+   the bubble row rather than looking like a standalone button. */
 .ka-copy-btn-inline {
+  background-color: #101010 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   opacity: 0;
   transition: opacity 0.15s ease, color 0.15s ease;
 }
 
+.ka-copy-btn-inline:hover {
+  color: #CBCBCB;
+}
+
 .ka-msg:hover .ka-copy-btn-inline {
   opacity: 1;
+}
+
+.ka-copy-btn-flash {
+  color: #8B6DFF !important;
 }
 
 /* Label row — holds label and copy button side by side */
@@ -129,6 +313,16 @@
 .ka-messages::-webkit-scrollbar-thumb {
   background: #2a2a2a;
   border-radius: 2px;
+}
+
+/* Transient status line (e.g. "Fetching names for this chat…") */
+.ka-status-row {
+  padding: 6px 14px;
+  font-size: 11px;
+  color: #88887A;
+  font-style: italic;
+  border-bottom: 1px solid #2a2a2a;
+  flex-shrink: 0;
 }
 
 /* ── Message rows ────────────────────────────────────── */
@@ -188,6 +382,24 @@
   border-bottom-right-radius: 4px;
 }
 
+/* Link offered in place of something the panel can't render (e.g. a
+   selfie) — straight to the real chat, where it actually is. */
+.ka-msg-link-row {
+  margin-top: 8px;
+}
+
+.ka-msg-link-row a {
+  color: #8B6DFF !important;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.ka-msg-link-row a:hover {
+  text-decoration: underline !important;
+}
+
 .ka-msg-assistant .ka-msg-bubble {
   background-color: #211B19;
   border-bottom-left-radius: 4px;
@@ -217,26 +429,38 @@
   background-color: #101010;
 }
 
+/* Same !important reasoning as the .ka-btn family — missed here the
+   first time because the resting state (what the earlier screenshot
+   showed) happened to render fine. Obsidian's own textarea hover
+   styling still wins without it, which only shows up on mouse-over. */
 .ka-input {
   width: 100%;
   min-height: 54px;
   max-height: 160px;
   resize: vertical;
   border-radius: 10px;
-  border: 1px solid #2a2a2a;
+  border: 1px solid #2a2a2a !important;
   padding: 9px 12px;
   font-size: var(--ka-font-size, 16px);
   line-height: 1.5;
-  background: #1B1C1E;
-  color: #CBCBCB;
+  background: #1B1C1E !important;
+  color: #CBCBCB !important;
   font-family: var(--ka-font-family, 'Poppins', sans-serif);
   box-sizing: border-box;
+  box-shadow: none !important;
   transition: border-color 0.15s ease;
 }
 
+.ka-input:hover {
+  background: #1B1C1E !important;
+  border-color: #2a2a2a !important;
+}
+
 .ka-input:focus {
-  outline: none;
-  border-color: #8B6DFF;
+  outline: none !important;
+  border-color: #8B6DFF !important;
+  background: #1B1C1E !important;
+  box-shadow: none !important;
 }
 
 .ka-input:disabled {
@@ -256,6 +480,14 @@
   align-items: center;
 }
 
+/* This whole family is meant to look the same regardless of whether
+   Obsidian itself is set to light or dark — a fixed Kindroid-dark
+   button, not one that adapts. Without !important on background,
+   border, box-shadow and outline, Obsidian's own light-theme button
+   styling (var(--interactive-normal) and friends) overrides these in
+   light mode — same cause, same fix, as the Set Scene icon buttons
+   above. It went unnoticed in dark mode only because the two
+   happened to look close enough there. */
 .ka-btn {
   padding: 6px 14px;
   border-radius: 7px;
@@ -263,6 +495,8 @@
   font-weight: 500;
   cursor: pointer;
   border: none;
+  box-shadow: none !important;
+  outline: none !important;
   font-family: var(--ka-font-family, 'Poppins', sans-serif);
   transition: opacity 0.15s ease, background-color 0.15s ease;
   white-space: nowrap;
@@ -275,45 +509,47 @@
 
 /* Send — purple */
 .ka-btn-primary {
-  background-color: #8B6DFF;
-  color: #ffffff;
+  background-color: #8B6DFF !important;
+  border: 1px solid #8B6DFF !important;
+  color: #CBCBCB !important;
 }
 
 .ka-btn-primary:hover:not(:disabled) {
-  background-color: #7A5EE8;
+  background-color: #7A5EE8 !important;
+  border-color: #7A5EE8 !important;
 }
 
 /* Chat Break — turns red on hover */
 .ka-btn-ghost {
-  background-color: transparent;
-  color: #8B6DFF;
-  border: 1px solid #8B6DFF;
+  background-color: #333333 !important;
+  color: #CBCBCB !important;
+  border: 1px solid #8B6DFF !important;
 }
 
 .ka-btn-ghost:hover:not(:disabled) {
-  background-color: rgba(220, 50, 50, 0.15);
-  color: #ff4444;
-  border-color: #ff4444;
+  background-color: rgba(220, 50, 50, 0.15) !important;
+  color: #ff4444 !important;
+  border-color: #ff4444 !important;
 }
 
 /* Clear Screen — matches send button purple style */
 .ka-btn-clear {
-  background-color: transparent;
-  color: #8B6DFF;
-  border: 1px solid #8B6DFF;
+  background-color: #333333 !important;
+  color: #CBCBCB !important;
+  border: 1px solid #8B6DFF !important;
 }
 
 .ka-btn-clear:hover:not(:disabled) {
-  background-color: rgba(139, 109, 255, 0.15);
-  color: #8B6DFF;
-  border-color: #8B6DFF;
+  background-color: rgba(139, 109, 255, 0.15) !important;
+  color: #CBCBCB !important;
+  border-color: #8B6DFF !important;
 }
 
 /* Mic button */
 .ka-btn-mic {
-  background-color: transparent;
-  color: #8B6DFF;
-  border: 1px solid #8B6DFF;
+  background-color: #333333 !important;
+  color: #CBCBCB !important;
+  border: 1px solid #8B6DFF !important;
   padding: 6px 10px;
   display: flex;
   align-items: center;
@@ -322,8 +558,8 @@
 }
 
 .ka-btn-mic:hover:not(:disabled) {
-  background-color: rgba(139, 109, 255, 0.15);
-  color: #8B6DFF;
+  background-color: rgba(139, 109, 255, 0.15) !important;
+  color: #CBCBCB !important;
 }
 
 /* Mic active — glowing red dot to show recording */
@@ -331,6 +567,24 @@
   color: #FE8484 !important;
   border-color: #FE8484 !important;
   background-color: rgba(254, 132, 132, 0.08) !important;
+}
+
+/* Poke button */
+.ka-btn-poke {
+  background-color: #333333 !important;
+  color: #CBCBCB !important;
+  border: 1px solid #8B6DFF !important;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.ka-btn-poke:hover:not(:disabled) {
+  background-color: rgba(139, 109, 255, 0.15) !important;
 }
 
 /* ── Custom context menu ─────────────────────────────── */
@@ -368,6 +622,130 @@
   background-color: rgba(254, 132, 132, 0.08);
 }
 
+.ka-context-divider {
+  height: 1px;
+  margin: 4px 0;
+  background-color: #2a2a2a;
+}
+
+/* ── Set Scene modal ─────────────────────────────────── */
+
+/* Same !important + explicit :hover reasoning as .ka-input — also
+   covered at the modal level by .ka-kindroid-modal textarea, but
+   given directly here too so this class stays correct on its own. */
+.ka-scene-textarea {
+  width: 100%;
+  min-height: 70px;
+  margin-top: 10px;
+  padding: 8px 10px;
+  background-color: #1B1C1E !important;
+  color: #CBCBCB !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 7px;
+  font-family: var(--ka-font-family, 'Poppins', sans-serif);
+  font-size: 13px;
+  resize: vertical;
+  box-shadow: none !important;
+}
+
+.ka-scene-textarea:hover {
+  background-color: #1B1C1E !important;
+  border-color: #2a2a2a !important;
+}
+
+.ka-scene-textarea:focus {
+  outline: none !important;
+  border-color: #8B6DFF !important;
+  background-color: #1B1C1E !important;
+  box-shadow: none !important;
+}
+
+.ka-scene-counter {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #88887A;
+  text-align: right;
+}
+
+.ka-scene-error {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #FE8484;
+  min-height: 1em;
+}
+
+.ka-scene-modal .ka-btn-row {
+  margin-top: 12px;
+  justify-content: space-between;
+}
+
+.ka-scene-icon-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* Decorative only — see the comment above where these are created.
+   Obsidian themes a bare <button> with its own background/border/
+   shadow (var(--interactive-normal) and friends), which is exactly
+   the "individual button" look that gives these away as controls —
+   !important strips all of that back out so only this rule's own
+   (invisible-until-hovered) styling is left. */
+.ka-scene-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 6px;
+  color: #3A3A34;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.ka-scene-icon-btn:hover,
+.ka-scene-icon-btn:focus-visible {
+  color: #CBCBCB;
+  background-color: rgba(139, 109, 255, 0.12) !important;
+}
+
+.ka-scene-icon-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Mic button tooltip / dictation-help popup ───────── */
+
+.ka-mic-tooltip {
+  background: #1B1C1E;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 8px 12px;
+  z-index: 9999;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  font-family: var(--ka-font-family, 'Poppins', sans-serif);
+  font-size: 13px;
+  color: #CBCBCB !important;
+}
+
+.ka-mic-help {
+  max-width: 260px;
+  line-height: 1.5;
+}
+
+.ka-mic-help-para {
+  margin: 0 0 10px 0;
+}
+
+.ka-mic-help-para:last-child {
+  margin-bottom: 0;
+}
+
 /* ── Voice select in settings ────────────────────────── */
 
 .ka-voice-select {
@@ -379,4 +757,64 @@
   font-size: 13px;
   max-width: 220px;
   width: 100%;
+}
+
+/* Set Scene Presets — small icon next to each preset's name, matching
+   the one shown for it in the Set Scene popup. */
+.ka-scene-preset-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+  color: #8B6DFF;
+  vertical-align: middle;
+}
+
+.ka-scene-preset-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── Collapsible settings sections (Main Chat / Group Chat) ─── */
+
+/* Group Chat row — inline "Single" checkbox between Name and Group Chat ID.
+   Checked = single-companion group (reveals the AI ID field below);
+   unchecked (default) = multi-companion, existing Poke behaviour. */
+.ka-group-single-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #CBCBCB;
+  margin: 0 8px;
+  white-space: nowrap;
+}
+
+.ka-group-single-toggle input[type="checkbox"] {
+  accent-color: #8B6DFF;
+  cursor: pointer;
+}
+
+.ka-settings-collapsible {
+  margin-bottom: 12px;
+}
+
+.ka-settings-collapsible > summary {
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0;
+  list-style: revert;
+  user-select: none;
+}
+
+.ka-settings-collapsible > summary:hover {
+  color: #8B6DFF;
+}
+
+/* Indent the row content slightly so it reads as "inside" the
+   collapsible section rather than flush with the summary line. */
+.ka-settings-collapsible > .setting-item {
+  padding-left: 8px;
 }

@@ -1,7 +1,7 @@
 {
   "id": "kindroid-assistant",
   "name": "Kindroid Assistant",
-  "version": "16.1.0",
+  "version": "17.1.0",
   "minAppVersion": "1.12.4",
   "description": "A chat panel powered by Kindroid AI, docked in your sidebar.",
   "author": "Pranara",
