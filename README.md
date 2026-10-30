@@ -66,13 +66,18 @@ Although I have some rudimentary knowledge of programming, which has proved inva
 
 ## Licencing
 
-**Licence change: MIT to GPL-3.0**
+This project is licensed under the PolyForm Noncommercial License 1.0.0.
 
-The project's licence has changed from MIT to GPL-3.0 because users who supply API keys and other sensitive information should have the ability to inspect the code for their own peace of mind.
+The project's licence has changed from MIT to PolyForm Noncommercial License 1.0.0 because users who supply API keys and other sensitive information should be able to inspect the code for their own peace of mind.
 
-Transparency is particularly important for software that handles credentials and personal data. GPL-3.0 also helps ensure that distributed modified versions remain open source.
+Transparency is particularly important for software that handles credentials and personal data.
 
-This change reflects a commitment to making the code available for inspection, independent auditing, modification, and community improvement.
+This change reflects a commitment to making the code available for inspection, independent auditing, modification, and noncommercial community improvement.
+
+Personal and other noncommercial use is permitted.
+Commercial use requires separate permission.
+
+See [LICENSE](LICENSE) for the full terms.
 
 ---
 
