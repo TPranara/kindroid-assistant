@@ -2,7 +2,7 @@
 
 # KINDROID ASSISTANT
 
-Obsidian is a free, local-first note-taking and knowledge management application available on Windows, Mac, Linux, iOS and Android. Unlike cloud-based tools, your notes live entirely on your own device as plain text Markdown files — no subscription required, no data sent anywhere, yours forever. It's widely used by writers, researchers, students and creatives who want to build a rich, interconnected "second brain" — notes that link to each other, embed images and media, and grow organically over time into something deeply personal.
+Obsidian is a completely free, local-first note-taking and knowledge management application available on Windows, Mac, Linux, iOS and Android. **No sign-up required. No strings attached.** By default, your notes are stored entirely on your own device as plain-text Markdown files. There is no subscription, no account requirement, and no obligation to use cloud services. Your notes remain yours, under your control. Obsidian also offers optional paid subscriptions for cloud-based syncing. Choosing these services means your notes are also stored and synchronised through the cloud, rather than remaining exclusively local. Obsidian is widely used by writers, researchers, students and creatives to build an interconnected "second brain", linking notes, embedding images and media, and developing a personal knowledge library that grows over time.
 
 ## This Plugin
 
